@@ -22,7 +22,7 @@ import { BellIcon } from "@heroicons/vue/outline";
 </div>
         <div class="container w-6/12 flex items-center justify-end">
         <input placeholder="Search" class="rounded-md border-2 w-80 h-10 px-5 mx-4"/>
-        <BellIcon class="h-6 w-6 mx-4"/>
+        <BellIcon class="h-6 w-6 mx-4 text-gray-400"/>
         <img src="./assets/pic.jpg" class="rounded-full w-10 h-10 mx-4"/>
         </div>
       </nav>
