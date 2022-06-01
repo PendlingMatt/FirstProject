@@ -64,14 +64,18 @@
 </template>
 
 <script lang="ts" setup>
-import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
-import { DotsVerticalIcon, PencilAltIcon, TrashIcon } from '@heroicons/vue/solid'
+import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
+import {
+  DotsVerticalIcon,
+  PencilAltIcon,
+  TrashIcon,
+} from "@heroicons/vue/solid";
 
 const props = defineProps({
   id: {
     type: String,
-  }
-})
+  },
+});
 
-const emit = defineEmits(['editEvent', 'deleteEvent'])
+const emit = defineEmits(["editEvent", "deleteEvent"]);
 </script>

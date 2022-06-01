@@ -86,8 +86,8 @@ import {
 } from "@headlessui/vue";
 
 const props = defineProps({
-  showModal: {default: {}},
+  showModal: { default: {} },
 });
 
-const emit = defineEmits(['confirm-delete', 'close']);
+const emit = defineEmits(["confirm-delete", "close"]);
 </script>
