@@ -30,7 +30,7 @@
                   active ? 'text-gray-900' : 'text-gray-500',
                   'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                 ]"
-                @click="$emit('editEvent', props.id)"
+                @click="$emit('edit-event')"
               >
                 <PencilAltIcon
                   :active="active"
@@ -46,7 +46,7 @@
                   active ? 'text-gray-900' : 'text-gray-500',
                   'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                 ]"
-                @click="$emit('deleteEvent', props.id)"
+                @click="$emit('delete-event')"
               >
                 <TrashIcon
                   :active="active"
@@ -71,11 +71,11 @@ import {
   TrashIcon,
 } from "@heroicons/vue/solid";
 
-const props = defineProps({
-  id: {
-    type: String,
-  },
-});
+// const props = defineProps({
+//   id: {
+//     type: String,
+//   },
+// });
 
-const emit = defineEmits(["editEvent", "deleteEvent"]);
+const emit = defineEmits(["edit-event", "delete-event"]);
 </script>
