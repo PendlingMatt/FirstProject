@@ -8,11 +8,11 @@
       </div>
     </div>
     <button
-      class="rounded-md bg-white m-4 w-40 h-10 text-gray-600 border-2 border-gray-300"
+      class="rounded-md bg-white m-4 px-4 h-10 text-gray-600 border-2 border-gray-300"
     >
       Disqualify
     </button>
-    <button class="rounded-md bg-blue-600 m-4 w-60 h-10 text-white">
+    <button class="rounded-md bg-blue-600 m-4 px-4 w-60 h-10 text-white">
       Advance to Offer
     </button>
   </div>

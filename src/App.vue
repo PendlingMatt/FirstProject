@@ -8,7 +8,7 @@ import { BellIcon } from "@heroicons/vue/outline";
   <header>
     <div>
       <nav class="flex items-center px-6">
-        <div class="container flex w-6/12 items-center">
+        <div class="container flex items-center">
           <RouterLink to="/" class="m-4">
             <BeakerIcon class="h-10 w-10 text-blue-600" />
           </RouterLink>
@@ -21,7 +21,8 @@ import { BellIcon } from "@heroicons/vue/outline";
           >
           <RouterLink to="/company" class="m-4 font-bold">Company</RouterLink>
         </div>
-        <div class="container w-6/12 flex items-center justify-end">
+        <div class="flex-grow"/>
+        <div class="container flex items-center justify-end">
           <SearchIcon class="w-6 h-6 relative left-14 text-gray-400" />
           <input
             placeholder="Search"
