@@ -7,6 +7,7 @@ type Note = {
   name: string;
   description: string;
   id: string;
+  time: Date
 };
 // const notes: Array<Note> = ref([]);
 const notes = ref<Note[]>(
@@ -16,12 +17,15 @@ const text = ref("");
 const noInput = ref(true);
 
 // adds a new note and saves it to localStorage
-const addNoteHandler = () => {
+const addNoteHandler = (e) => {
+  e.preventDefault();
   const newNote = {
     name: "Matthew Chua",
     description: text.value,
     id: String(Math.random()),
+    time: new Date()
   };
+
 
   notes.value.push(newNote);
   text.value = "";
@@ -67,32 +71,34 @@ const editHandler = (id, newDesc) => {
       @delete-event="deleteHandler"
       @edit-event="editHandler"
     />
-
-    <div class="flex items-start mt-8">
-      <img src="../assets/pic.jpg" class="rounded-full h-10 w-10" />
-      <textarea
-        placeholder="Add a note"
-        rows="5"
-        class="flex-grow rounded-md border-2 mx-2 p-2 resize-none"
-        v-model="text"
-        @input="checkInput"
-      />
-    </div>
-
-    <div class="flex">
-      <div class="flex items-center pt-2 px-12">
-        <QuestionMarkCircleIcon class="h-6 text-gray-400" />
-        <div class="text-gray-400 px-2">Some HTML is okay.</div>
+    <form @submit="addNoteHandler">
+      <div class="flex items-start mt-8">
+        <img src="../assets/pic.jpg" class="rounded-full h-10 w-10" />
+        <textarea
+          v-on:keyup.enter="addNoteHandler"
+          placeholder="Add a note"
+          rows="5"
+          class="flex-grow rounded-md border-2 mx-2 p-2 resize-none"
+          v-model="text"
+          @input="checkInput"
+        />
       </div>
-      <div class="flex-grow" />
 
-      <button
-        class="text-white bg-blue-600 rounded-md w-28 h-10 m-4 disabled:opacity-50"
-        :disabled="noInput"
-        @click="addNoteHandler"
-      >
-        Comment
-      </button>
-    </div>
+      <div class="flex">
+        <div class="flex items-center pt-2 px-12">
+          <QuestionMarkCircleIcon class="h-6 text-gray-400" />
+          <div class="text-gray-400 px-2">Some HTML is okay.</div>
+        </div>
+        <div class="flex-grow" />
+
+        <button
+          class="text-white bg-blue-600 rounded-md w-28 h-10 m-4 disabled:opacity-50"
+          :disabled="noInput"
+          type="submit"
+        >
+          Comment
+        </button>
+      </div>
+    </form>
   </div>
 </template>

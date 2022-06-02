@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import resume from "../assets/document.pdf";
 import { PaperClipIcon } from "@heroicons/vue/solid";
+
+const props = defineProps<{
+  userInfo;
+}>();
 </script>
 
 <template>
@@ -13,30 +17,30 @@ import { PaperClipIcon } from "@heroicons/vue/solid";
     <div class="flex justify-between pt-6 pl-6">
       <div class="w-2/4">
         <div class="text-gray-500 mt-4">Application for</div>
-        <div class="text-lg">Backend Developer</div>
+        <div class="text-lg">{{ userInfo.role }}</div>
         <div class="text-gray-500 mt-4">Salary Expectation</div>
-        <div class="text-lg">$120,000</div>
+        <div class="text-lg">
+          {{
+            new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'JPY' }).format(userInfo.salary)
+          }}
+        </div>
       </div>
 
       <div class="w-2/4">
         <div class="text-gray-500 mt-4">Email Address</div>
-        <div class="text-lg">ricardocooper@gmail.com</div>
+        <div class="text-lg">
+          <a href="mailto:ricardocooper@gmail.com">{{ userInfo.email }}</a>
+        </div>
         <div class="text-gray-500 mt-4">Phone</div>
-        <div class="text-lg">+1 555-555-5555</div>
+        <div class="text-lg">
+          <a href="tel:+1 555-555-5555">{{ userInfo.phone }}</a>
+        </div>
       </div>
     </div>
     <div class="px-6">
       <div class="text-gray-500 mt-4">About</div>
       <p class="text-lg">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release
-        of Letraset sheets containing Lorem Ipsum passages, and more recently
-        with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.
+        {{ userInfo.about }}
       </p>
     </div>
     <div class="px-6">
