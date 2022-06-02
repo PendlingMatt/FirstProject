@@ -12,17 +12,17 @@ import { PaperClipIcon } from "@heroicons/vue/solid";
     <hr />
     <div class="flex justify-between pt-6 pl-6">
       <div class="w-2/4">
-        <p class="text-gray-500 mt-4">Application for</p>
-        <p class="text-lg">Backend Developer</p>
-        <p class="text-gray-500 mt-4">Salary Expectation</p>
-        <p class="text-lg">$120,000</p>
+        <div class="text-gray-500 mt-4">Application for</div>
+        <div class="text-lg">Backend Developer</div>
+        <div class="text-gray-500 mt-4">Salary Expectation</div>
+        <div class="text-lg">$120,000</div>
       </div>
 
       <div class="w-2/4">
-        <p class="text-gray-500 mt-4">Email Address</p>
-        <p class="text-lg">ricardocooper@gmail.com</p>
-        <p class="text-gray-500 mt-4">Phone</p>
-        <p class="text-lg">+1 555-555-5555</p>
+        <div class="text-gray-500 mt-4">Email Address</div>
+        <div class="text-lg">ricardocooper@gmail.com</div>
+        <div class="text-gray-500 mt-4">Phone</div>
+        <div class="text-lg">+1 555-555-5555</div>
       </div>
     </div>
     <div class="px-6">
@@ -44,7 +44,7 @@ import { PaperClipIcon } from "@heroicons/vue/solid";
       <div class="rounded-md border-2 my-2">
         <div class="flex border-b-2 p-2 items-center">
           <PaperClipIcon class="h-8 mr-2" />
-          <p>resume_front_end_developer.pdf</p>
+          <div>resume_front_end_developer.pdf</div>
           <div class="flex justify-end w-full mr-4">
             <a :href="resume" download class="text-blue-600 font-bold"
               >Download</a
@@ -53,7 +53,7 @@ import { PaperClipIcon } from "@heroicons/vue/solid";
         </div>
         <div class="flex p-2 items-center">
           <PaperClipIcon class="h-8 mr-2" />
-          <p>resume_front_end_developer.pdf</p>
+          <div>resume_front_end_developer.pdf</div>
           <div class="flex justify-end w-full mr-4">
             <a :href="resume" download class="text-blue-600 font-bold"
               >Download</a

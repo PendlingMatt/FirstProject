@@ -13,8 +13,6 @@ const notes = ref<Note[]>(
   localStorage.getItem("notes") ? JSON.parse(localStorage.getItem("notes")) : []
 );
 const text = ref("");
-const editing = ref(false);
-const editedNoteId = ref("");
 const noInput = ref(true);
 
 // adds a new note and saves it to localStorage
@@ -84,7 +82,7 @@ const editHandler = (id, newDesc) => {
     <div class="flex">
       <div class="flex items-center pt-2 px-12">
         <QuestionMarkCircleIcon class="h-6 text-gray-400" />
-        <p class="text-gray-400 px-2">Some HTML is okay.</p>
+        <div class="text-gray-400 px-2">Some HTML is okay.</div>
       </div>
       <div class="flex-grow" />
 

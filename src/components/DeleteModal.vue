@@ -45,9 +45,9 @@
                 Are you sure you want to delete this note?
               </DialogTitle>
               <div class="mt-2">
-                <p class="text-sm text-gray-500">
+                <div class="text-sm text-gray-500">
                   Deleted notes cannot be recovered!
-                </p>
+                </div>
               </div>
 
               <div class="mt-4 flex justify-end">
