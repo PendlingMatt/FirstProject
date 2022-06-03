@@ -1,32 +1,35 @@
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref } from 'vue'
 import {
   TransitionRoot,
   TransitionChild,
   Dialog,
   DialogPanel,
   DialogTitle,
-} from "@headlessui/vue";
+} from '@headlessui/vue'
 
-const props = defineProps({
-  showModal: { default: {} },
-});
-// const isOpen = ref(props.showModal);
-// console.log("open", isOpen.value);
+const isOpen = ref(true)
 
-// function closeModal() {
-//   isOpen.value = false;
-// }
-// function openModal() {
-//   isOpen.value = true;
-// }
-
-const emit = defineEmits(["confirm-delete", "close"]);
+function closeModal() {
+  isOpen.value = false
+}
+function openModal() {
+  isOpen.value = true
+}
 </script>
 
 <template>
-  <TransitionRoot appear :show="showModal" as="template">
-    <Dialog as="div" @close="$emit('close')" class="relative z-10">
+  <div class="fixed inset-0 flex items-center justify-center">
+    <button
+      type="button"
+      @click="openModal"
+      class="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+    >
+      Open dialog
+    </button>
+  </div>
+  <TransitionRoot appear :show="isOpen" as="template">
+    <Dialog as="div" @close="closeModal" class="relative z-10">
       <TransitionChild
         as="template"
         enter="duration-300 ease-out"
@@ -59,29 +62,22 @@ const emit = defineEmits(["confirm-delete", "close"]);
                 as="h3"
                 class="text-lg font-medium leading-6 text-gray-900"
               >
-                Are you sure you want to delete this note?
+                Payment successful
               </DialogTitle>
               <div class="mt-2">
-                <div class="text-sm text-gray-500">
-                  Deleted notes cannot be recovered!
-                </div>
+                <p class="text-sm text-gray-500">
+                  Your payment has been successfully submitted. We’ve sent you
+                  an email with all of the details of your order.
+                </p>
               </div>
 
-              <div class="mt-4 flex justify-end">
+              <div class="mt-4">
                 <button
                   type="button"
-                  class="inline-flex justify-center rounded-md border border-gray-300 bg-white border-2 px-4 mx-2 py-2 text-sm font-medium text-black hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                  @click="$emit('close')"
+                  class="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                  @click="closeModal"
                 >
-                  Cancel
-                </button>
-
-                <button
-                  type="button"
-                  class="inline-flex justify-center rounded-md border border-transparent bg-red-600 px-4 mx-2 py-2 text-sm font-medium text-white hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
-                  @click="$emit('confirm-delete')"
-                >
-                  Delete
+                  Got it, thanks!
                 </button>
               </div>
             </DialogPanel>
@@ -91,3 +87,5 @@ const emit = defineEmits(["confirm-delete", "close"]);
     </Dialog>
   </TransitionRoot>
 </template>
+
+

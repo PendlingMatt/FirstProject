@@ -2,6 +2,7 @@
 import Menu from "./Menu.vue";
 import DeleteModal from "./DeleteModal.vue";
 import { ref } from "vue";
+import NewDeleteModal from "./NewDeleteModal.vue";
 
 const showDeleteModal = ref(false);
 const text = ref("");
@@ -29,6 +30,7 @@ const saveEditHandler = () => {
 
 const toggleDeleteModal = () => {
   showDeleteModal.value = !showDeleteModal.value;
+  console.log("in single note", showDeleteModal.value);
 };
 
 const deleteHandler = () => {
@@ -72,10 +74,14 @@ const emit = defineEmits(["edit-event", "delete-event"]);
       <img src="../assets/pic.jpg" class="rounded-full h-10 w-10" />
       <div class="mx-4">
         <div class="font-bold">{{ info.name }}</div>
-        <div v-if="!editing" class="break-words">{{ info.description }}</div>
-        <div v-if="editing" class="flex-col">
-          <input class="border-2 rounded-md" v-model="text" />
-        </div>
+        <Transition name="fade">
+          <div v-if="editing" class="flex-col">
+            <input class="border-2 rounded-md" v-model="text" />
+          </div>
+        </Transition>
+        <Transition name="fade">
+          <div v-if="!editing" class="break-words">{{ info.description }}</div>
+        </Transition>
       </div>
     </div>
     <div class="flex-grow" />
@@ -88,17 +94,19 @@ const emit = defineEmits(["edit-event", "delete-event"]);
       <strong class="text-black">· Reply </strong>
     </div>
     <div class="flex-grow" />
-    <div v-if="editing">
-      <button @click="editHandler" class="border-2 rounded-md p-2">
-        Discard Changes
-      </button>
-      <button
-        @click="saveEditHandler"
-        class="bg-blue-500 rounded-md p-2 text-white ml-2"
-      >
-        Update
-      </button>
-    </div>
+    <Transition name="fade">
+      <div v-if="editing">
+        <button @click="editHandler" class="border-2 rounded-md p-2">
+          Discard Changes
+        </button>
+        <button
+          @click="saveEditHandler"
+          class="bg-blue-500 rounded-md p-2 text-white ml-2"
+        >
+          Update
+        </button>
+      </div>
+    </Transition>
   </div>
   <DeleteModal
     :showModal="showDeleteModal"
@@ -106,3 +114,29 @@ const emit = defineEmits(["edit-event", "delete-event"]);
     @close="toggleDeleteModal"
   />
 </template>
+
+<style>
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-enter-active {
+  transition: all 1s ease;
+}
+
+.fade-leave-from {
+  opacity: 1;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-leave-active {
+  transition: all 1s ease;
+}
+</style>
